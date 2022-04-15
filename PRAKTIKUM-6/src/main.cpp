@@ -88,7 +88,7 @@
 // #include <Arduino.h>
 // #include <DHT.h>
 
-// #define DHTTYPE DHT11
+
 
 // DHT dht(D7, DHTTYPE);
 
