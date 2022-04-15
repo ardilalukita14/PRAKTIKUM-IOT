@@ -238,6 +238,7 @@ void loop()
         lcd.print(":");
     }
 
+
     lcd.setCursor(0, 1);
     // lcd.print("Date: ");
     printkurangdarinol(day());
