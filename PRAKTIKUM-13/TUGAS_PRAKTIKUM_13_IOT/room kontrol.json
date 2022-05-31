@@ -1,0 +1,368 @@
+[
+    {
+        "id": "b4de467e8b4536c1",
+        "type": "tab",
+        "label": "Room Control",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b6b881f3bfad8870",
+        "type": "ui_switch",
+        "z": "b4de467e8b4536c1",
+        "name": "sw-lampu1",
+        "label": "Lampu 1",
+        "tooltip": "",
+        "group": "f293a6ab.168c78",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "x": 210,
+        "y": 100,
+        "wires": [
+            [
+                "85f6a752775321b2"
+            ]
+        ]
+    },
+    {
+        "id": "e95bfa74c04384dd",
+        "type": "ui_text",
+        "z": "b4de467e8b4536c1",
+        "group": "f293a6ab.168c78",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "lb-hasil1",
+        "label": "Status",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 520,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "85f6a752775321b2",
+        "type": "function",
+        "z": "b4de467e8b4536c1",
+        "name": "parsing",
+        "func": "var val = msg.payload?\"Nyala\":\"Mati\";\nnode.warn(\"value: \"+val);\nnode.warn(\"type: \"+typeof val);\nmsg.payload=val;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 100,
+        "wires": [
+            [
+                "e95bfa74c04384dd"
+            ]
+        ]
+    },
+    {
+        "id": "343f8ea590a34bca",
+        "type": "ui_switch",
+        "z": "b4de467e8b4536c1",
+        "name": "sw-lampu2",
+        "label": "Lampu 2",
+        "tooltip": "",
+        "group": "f293a6ab.168c78",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "a4fe2374df35663b"
+            ]
+        ]
+    },
+    {
+        "id": "948881b8c6af3e4d",
+        "type": "ui_text",
+        "z": "b4de467e8b4536c1",
+        "group": "f293a6ab.168c78",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "lb-hasil2",
+        "label": "Status",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 520,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "a4fe2374df35663b",
+        "type": "function",
+        "z": "b4de467e8b4536c1",
+        "name": "parsing",
+        "func": "var val = msg.payload?\"Nyala\":\"Mati\";\nnode.warn(\"value: \"+val);\nnode.warn(\"type: \"+typeof val);\nmsg.payload=val;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 160,
+        "wires": [
+            [
+                "948881b8c6af3e4d"
+            ]
+        ]
+    },
+    {
+        "id": "653e6087e4292854",
+        "type": "ui_slider",
+        "z": "b4de467e8b4536c1",
+        "name": "slider-ac1",
+        "label": "AC 1",
+        "tooltip": "",
+        "group": "65c4829e.5cc07c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "30",
+        "step": 1,
+        "x": 200,
+        "y": 300,
+        "wires": [
+            [
+                "da4cafd482530646"
+            ]
+        ]
+    },
+    {
+        "id": "43f64241963ecffe",
+        "type": "ui_switch",
+        "z": "b4de467e8b4536c1",
+        "name": "sw-lampu3",
+        "label": "Lampu 3",
+        "tooltip": "",
+        "group": "f293a6ab.168c78",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "x": 190,
+        "y": 220,
+        "wires": [
+            [
+                "6a0d6a876697af37"
+            ]
+        ]
+    },
+    {
+        "id": "bc580671b1e11fc5",
+        "type": "ui_text",
+        "z": "b4de467e8b4536c1",
+        "group": "f293a6ab.168c78",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "lb-hasil3",
+        "label": "Status",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 520,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "6a0d6a876697af37",
+        "type": "function",
+        "z": "b4de467e8b4536c1",
+        "name": "parsing",
+        "func": "var val = msg.payload?\"Nyala\":\"Mati\";\nnode.warn(\"value: \"+val);\nnode.warn(\"type: \"+typeof val);\nmsg.payload=val;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 220,
+        "wires": [
+            [
+                "bc580671b1e11fc5"
+            ]
+        ]
+    },
+    {
+        "id": "da4cafd482530646",
+        "type": "ui_text",
+        "z": "b4de467e8b4536c1",
+        "group": "65c4829e.5cc07c",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "lb-ac1",
+        "label": "Suhu",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 350,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ababc52c6167d875",
+        "type": "ui_text",
+        "z": "b4de467e8b4536c1",
+        "group": "65c4829e.5cc07c",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "lb-ac2",
+        "label": "Suhu",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 350,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "0eb5cd36283832ac",
+        "type": "ui_slider",
+        "z": "b4de467e8b4536c1",
+        "name": "slider-ac2",
+        "label": "AC 2",
+        "tooltip": "",
+        "group": "65c4829e.5cc07c",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "30",
+        "step": 1,
+        "x": 200,
+        "y": 360,
+        "wires": [
+            [
+                "ababc52c6167d875"
+            ]
+        ]
+    },
+    {
+        "id": "68c834e1ac51100a",
+        "type": "ui_text",
+        "z": "b4de467e8b4536c1",
+        "group": "65c4829e.5cc07c",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "name": "lb-ac3",
+        "label": "Suhu",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 350,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "61a5dd542aa4f5e3",
+        "type": "ui_slider",
+        "z": "b4de467e8b4536c1",
+        "name": "slider-ac3",
+        "label": "AC 3",
+        "tooltip": "",
+        "group": "65c4829e.5cc07c",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "30",
+        "step": 1,
+        "x": 200,
+        "y": 420,
+        "wires": [
+            [
+                "68c834e1ac51100a"
+            ]
+        ]
+    },
+    {
+        "id": "f293a6ab.168c78",
+        "type": "ui_group",
+        "name": "Lampu",
+        "tab": "218120f7.293de",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "65c4829e.5cc07c",
+        "type": "ui_group",
+        "name": "AC",
+        "tab": "218120f7.293de",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "218120f7.293de",
+        "type": "ui_tab",
+        "name": "Room Control",
+        "icon": "fa-gears",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]

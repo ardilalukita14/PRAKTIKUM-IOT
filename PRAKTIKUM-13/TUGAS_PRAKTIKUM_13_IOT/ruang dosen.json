@@ -1,0 +1,176 @@
+[
+    {
+        "id": "1b90180e34d15832",
+        "type": "tab",
+        "label": "ruang dosen",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "84c39e5fa56509c8",
+        "type": "ui_chart",
+        "z": "1b90180e34d15832",
+        "name": "gauge2-dosen",
+        "group": "b215aba2.2bdff8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Humadity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": true,
+        "ymin": "1",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 440,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cdfaec6e8d22c17e",
+        "type": "ui_gauge",
+        "z": "1b90180e34d15832",
+        "name": "gauge1-dosen",
+        "group": "b215aba2.2bdff8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "Celcius",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 440,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "2dce9f45ed5a58dc",
+        "type": "inject",
+        "z": "1b90180e34d15832",
+        "name": "inject1-dosen",
+        "props": [],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "4c8ae54edfe5cb1e"
+            ]
+        ]
+    },
+    {
+        "id": "4c8ae54edfe5cb1e",
+        "type": "function",
+        "z": "1b90180e34d15832",
+        "name": "",
+        "func": "var rand = Math.floor(Math.random()*101);\n// node.warn(\"Random: \"+rand);\nmsg.payload = rand;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 120,
+        "wires": [
+            [
+                "cdfaec6e8d22c17e"
+            ]
+        ]
+    },
+    {
+        "id": "70314cc719772ee3",
+        "type": "inject",
+        "z": "1b90180e34d15832",
+        "name": "inject2-dosen",
+        "props": [],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 260,
+        "wires": [
+            [
+                "2b865479ec5efca3"
+            ]
+        ]
+    },
+    {
+        "id": "2b865479ec5efca3",
+        "type": "function",
+        "z": "1b90180e34d15832",
+        "name": "",
+        "func": "var msg = {};\nvar msg1 = {};\n\nmsg.payload = Math.floor(Math.random()*101);\nmsg.topic = \"Humadity1\";\n// node.warn(\"Random: \"+rand);\n\nmsg1.payload = Math.floor(Math.random()*101);\nmsg1.topic = \"Humadity2\";\n\nreturn [msg,msg1];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 360,
+        "wires": [
+            [
+                "84c39e5fa56509c8"
+            ],
+            [
+                "84c39e5fa56509c8"
+            ]
+        ]
+    },
+    {
+        "id": "b215aba2.2bdff8",
+        "type": "ui_group",
+        "name": "Ruang Dosen",
+        "tab": "db5f85b.315ac78",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": true
+    },
+    {
+        "id": "db5f85b.315ac78",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "fa-home",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

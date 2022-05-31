@@ -1,0 +1,44 @@
+[
+    {
+        "id": "cc5b6bae955772b7",
+        "type": "tab",
+        "label": "About",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6a0af71a9c37a2b0",
+        "type": "ui_text",
+        "z": "cc5b6bae955772b7",
+        "group": "a4a2ae04.fc73c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "lb-about",
+        "label": "",
+        "format": "Aplikasi website yang digunakan untuk memonitoring dan mengontrol lobby, ruang kajur, dan ruang dosen. ",
+        "layout": "col-center",
+        "x": 320,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a4a2ae04.fc73c",
+        "type": "ui_group",
+        "name": "JTI Smart Room",
+        "tab": "5f61bce2.2e6e54",
+        "order": 1,
+        "disp": true,
+        "width": "10",
+        "collapse": false
+    },
+    {
+        "id": "5f61bce2.2e6e54",
+        "type": "ui_tab",
+        "name": "About",
+        "icon": "fa-info-circle",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    }
+]

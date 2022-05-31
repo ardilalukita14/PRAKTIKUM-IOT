@@ -1,0 +1,179 @@
+[
+    {
+        "id": "4b9c96c746adb528",
+        "type": "tab",
+        "label": "Lobby",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2c2d99efd404d58d",
+        "type": "ui_gauge",
+        "z": "4b9c96c746adb528",
+        "name": "gauge1-lobby",
+        "group": "e0568411.518ca8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "Celcius",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 550,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "04fcdb9e9ad89dd9",
+        "type": "ui_chart",
+        "z": "4b9c96c746adb528",
+        "name": "gauge2-lobby",
+        "group": "e0568411.518ca8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Humadity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "monotone",
+        "nodata": "",
+        "dot": true,
+        "ymin": "1",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 540,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7494c0aa8ce6b21c",
+        "type": "inject",
+        "z": "4b9c96c746adb528",
+        "name": "inject2-lobby",
+        "props": [],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 240,
+        "y": 240,
+        "wires": [
+            [
+                "412febaca6092609"
+            ]
+        ]
+    },
+    {
+        "id": "412febaca6092609",
+        "type": "function",
+        "z": "4b9c96c746adb528",
+        "name": "func random",
+        "func": "var msg = {};\nvar msg1 = {};\nvar msg2 = {};\n\nmsg.payload = Math.floor(Math.random()*101);\nmsg.topic = \"Humadity1\";\n// node.warn(\"Random: \"+rand);\n\nmsg1.payload = Math.floor(Math.random()*101);\nmsg1.topic = \"Humadity2\";\n\nmsg2.payload = Math.floor(Math.random()*101);\nmsg2.topic = \"Humadity3\";\nreturn [msg,msg1,msg2];",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 300,
+        "wires": [
+            [
+                "04fcdb9e9ad89dd9"
+            ],
+            [
+                "04fcdb9e9ad89dd9"
+            ],
+            [
+                "04fcdb9e9ad89dd9"
+            ]
+        ]
+    },
+    {
+        "id": "4a2f4c72c1b5bd33",
+        "type": "inject",
+        "z": "4b9c96c746adb528",
+        "name": "inject1-lobby",
+        "props": [],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 240,
+        "y": 180,
+        "wires": [
+            [
+                "7b52543f4a72bc57"
+            ]
+        ]
+    },
+    {
+        "id": "7b52543f4a72bc57",
+        "type": "function",
+        "z": "4b9c96c746adb528",
+        "name": "",
+        "func": "var rand = Math.floor(Math.random()*101);\n// node.warn(\"Random: \"+rand);\nmsg.payload = rand;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "2c2d99efd404d58d"
+            ]
+        ]
+    },
+    {
+        "id": "e0568411.518ca8",
+        "type": "ui_group",
+        "name": "Lobby",
+        "tab": "db5f85b.315ac78",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "db5f85b.315ac78",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "fa-home",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

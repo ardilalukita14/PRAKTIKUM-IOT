@@ -1,0 +1,171 @@
+[
+    {
+        "id": "0bacc80d6840c607",
+        "type": "tab",
+        "label": "ruang kajur",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "751a5f3f78b042e1",
+        "type": "ui_gauge",
+        "z": "0bacc80d6840c607",
+        "name": "gauge1-kajur",
+        "group": "57d83304.4099cc",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "Celcius",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 460,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "6dafc114d6e695b5",
+        "type": "ui_chart",
+        "z": "0bacc80d6840c607",
+        "name": "gauge2-kajur",
+        "group": "57d83304.4099cc",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Humadity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": true,
+        "ymin": "1",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 570,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a2568491e4952154",
+        "type": "inject",
+        "z": "0bacc80d6840c607",
+        "name": "inject1-kajur",
+        "props": [],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "d28f3ec477992d48"
+            ]
+        ]
+    },
+    {
+        "id": "d28f3ec477992d48",
+        "type": "function",
+        "z": "0bacc80d6840c607",
+        "name": "",
+        "func": "var rand = Math.floor(Math.random()*101);\n// node.warn(\"Random: \"+rand);\nmsg.payload = rand;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 320,
+        "y": 100,
+        "wires": [
+            [
+                "751a5f3f78b042e1"
+            ]
+        ]
+    },
+    {
+        "id": "ef8f6ae59cdb92ab",
+        "type": "inject",
+        "z": "0bacc80d6840c607",
+        "name": "inject2-kajur",
+        "props": [],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 240,
+        "wires": [
+            [
+                "b8cab0f0366edbc7"
+            ]
+        ]
+    },
+    {
+        "id": "b8cab0f0366edbc7",
+        "type": "function",
+        "z": "0bacc80d6840c607",
+        "name": "",
+        "func": "msg.payload = Math.floor(Math.random()*101);\nmsg.topic = \"Hum1\";\n// node.warn(\"Random: \"+rand);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 320,
+        "y": 320,
+        "wires": [
+            [
+                "6dafc114d6e695b5"
+            ]
+        ]
+    },
+    {
+        "id": "57d83304.4099cc",
+        "type": "ui_group",
+        "name": "Ruang Kajur",
+        "tab": "db5f85b.315ac78",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "db5f85b.315ac78",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "fa-home",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
