@@ -188,22 +188,6 @@
         "wires": []
     },
     {
-        "id": "a0675914e21e52f6",
-        "type": "ui_text",
-        "z": "89ce5c1151437c4f",
-        "group": "dbe231626671d7e0",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "name": "light",
-        "label": "Kondisi Cahaya",
-        "format": "{{msg.payload}}",
-        "layout": "col-center",
-        "x": 410,
-        "y": 840,
-        "wires": []
-    },
-    {
         "id": "3e7f236ff7c76960",
         "type": "mqtt in",
         "z": "89ce5c1151437c4f",
@@ -389,10 +373,11 @@
         "rh": 0,
         "inputs": 0,
         "x": 160,
-        "y": 940,
+        "y": 820,
         "wires": [
             [
-                "43515fc5758571d7"
+                "43515fc5758571d7",
+                "223162bd8ba0e55f"
             ]
         ]
     },
@@ -405,26 +390,6 @@
         "x": 110,
         "y": 1100,
         "wires": []
-    },
-    {
-        "id": "213425a5ba892128",
-        "type": "function",
-        "z": "89ce5c1151437c4f",
-        "name": "",
-        "func": "m = msg.payload;\n\nif(m>=200)\n{\n    return{payload:'Terang'}\n}\n\nelse if(50>= m <=150)\n{\n    return{payload:'Redup'}\n}\n\nelse if(0>= m <=49 )\n{\n    return{payload:'Gelap'}\n}\n//return msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 940,
-        "wires": [
-            [
-                "43515fc5758571d7",
-                "a0675914e21e52f6"
-            ]
-        ]
     },
     {
         "id": "fd0b0f76d70bb138",
@@ -511,21 +476,75 @@
         "wires": []
     },
     {
+        "id": "223162bd8ba0e55f",
+        "type": "function",
+        "z": "89ce5c1151437c4f",
+        "name": "",
+        "func": "m = msg.payload\nt = msg.topic;\n\nif (m <= 500)\n{\n    return {topic:t, payload:'Terang'};\n}\n\nelse if(501 <= m && m <= 700)\n{\n    return {topic:t, payload:'Redup'};\n}\n\nelse if(m >= 701)\n{\n    return {topic:t, payload:'Gelap'};\n}\n//return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 820,
+        "wires": [
+            [
+                "8471540248f8dd73"
+            ]
+        ]
+    },
+    {
+        "id": "2e7b484b5576626f",
+        "type": "inject",
+        "z": "89ce5c1151437c4f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 440,
+        "y": 860,
+        "wires": [
+            [
+                "223162bd8ba0e55f"
+            ]
+        ]
+    },
+    {
+        "id": "8471540248f8dd73",
+        "type": "ui_text",
+        "z": "89ce5c1151437c4f",
+        "group": "dbe231626671d7e0",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "light",
+        "label": "Kondisi Cahaya",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 610,
+        "y": 940,
+        "wires": []
+    },
+    {
         "id": "b44d60a94fd0e966",
         "type": "ui_group",
         "name": "Control",
         "tab": "a89cdacf59331d8c",
         "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": true
-    },
-    {
-        "id": "dbe231626671d7e0",
-        "type": "ui_group",
-        "name": "Cahaya",
-        "tab": "a89cdacf59331d8c",
-        "order": 3,
         "disp": true,
         "width": "6",
         "collapse": true
@@ -563,6 +582,16 @@
         "name": "Monitoring",
         "tab": "a89cdacf59331d8c",
         "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "dbe231626671d7e0",
+        "type": "ui_group",
+        "name": "Cahaya",
+        "tab": "a89cdacf59331d8c",
+        "order": 3,
         "disp": true,
         "width": "6",
         "collapse": true

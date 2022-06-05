@@ -4,7 +4,7 @@
 #include <SimpleDHT.h>
 
 const char *ssid = "Kochengimoet";     // silakan disesuaikan sendiri
-const char *password = "wifigangguan"; // silakan disesuaikan sendiri
+const char *password = "gratisanterus"; // silakan disesuaikan sendiri
 
 const char *mqtt_server = "broker.hivemq.com";
 
